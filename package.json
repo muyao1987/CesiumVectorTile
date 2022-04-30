@@ -6,9 +6,7 @@
 	"dependencies": {
     "@turf/turf": "^6.5.0",
 		"mars3d-cesium": "^1.92.5",
-		"mersenne-twister": "^1.1.0",
-		"shpjs": "^3.4.3",
-		"uri": "^0.1.0"
+		"shpjs": "^3.4.3"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.14.3",

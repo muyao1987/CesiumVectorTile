@@ -1,8 +1,4 @@
-﻿// function Rect(x, y, w, h) {
-//   return { x: x, y: y, width: w, height: h };
-// }
-
-let Point = function (x, y) {
+﻿let Point = function (x, y) {
   return { x: x, y: y };
 };
 

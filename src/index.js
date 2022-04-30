@@ -1,3 +1,2 @@
-﻿import "./include/ImageryLayerCollection";
-
+﻿export { VectorStyle } from "./VectorStyle";
 export { VectorTileImageryProvider } from "./VectorTileImageryProvider";

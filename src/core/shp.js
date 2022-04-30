@@ -16,11 +16,16 @@ export function groupFiles(files) {
   return group;
 }
 
+export function loadShp(base, whiteList) {
+  return shp(base, whiteList);
+}
+
 export function parseShpFiles(files, encoding) {
   if (!files || files.length > 0) {
     let df = Cesium.defer();
     let promise = df.promise;
     let shpFile, dbfFile, prjFile;
+
     for (let i = 0; i < files.length; i++) {
       if (files[i].name.toLocaleLowerCase().indexOf(".shp") > 0) {
         shpFile = files[i];
@@ -32,14 +37,14 @@ export function parseShpFiles(files, encoding) {
         dbfFile = files[i];
       }
     }
+
     if (!shpFile || !prjFile || !dbfFile) {
-      // throw new Error("打开文件失败,请通过ctrl+同时选择shp、prj、dbf三个文件");
       df.reject(new Error("打开文件失败,请通过ctrl+同时选择shp、prj、dbf三个文件"));
       return promise;
     }
     readAsArrayBuffer(shpFile)
       .then(function (shpBuffer) {
-        readAsText(prjFile)
+        readAsText(prjFile, encoding)
           .then(function (prjBuffer) {
             readAsArrayBuffer(dbfFile)
               .then(function (dbfBuffer) {

@@ -1,15 +1,10 @@
 import * as Cesium from "mars3d-cesium";
-import { defaultValue, defined } from "mars3d-cesium";
 
 function getColor(color) {
-  if (typeof Cesium != "undefined") {
-    if (typeof color == "string") {
-      color = Cesium.Color.fromCssColorString(color);
-    } else if (Array.isArray(color)) {
-      color = Cesium.Color.fromBytes(color[0], color[1], color[2], color[3]);
-    }
+  if (typeof color == "string") {
+    color = Cesium.Color.fromCssColorString(color);
   } else if (Array.isArray(color)) {
-    color = "rgba(" + [color[0], color[1], color[2], defaultValue(color[3], 0) / 255].join(",") + ")";
+    color = Cesium.Color.fromBytes(color[0], color[1], color[2], color[3]);
   }
   return color;
 }
@@ -59,61 +54,61 @@ export function VectorStyle(options) {
   if (typeof document == "undefined") {
     return options;
   }
-  options = defaultValue(options, {});
-  this.fillColor = defaultValue(getColor(options.fillColor), getColor([0, 255, 255, 30]));
+  options = Cesium.defaultValue(options, {});
+  this.fillColor = Cesium.defaultValue(getColor(options.fillColor), getColor([0, 255, 255, 30]));
 
-  this.fill = defaultValue(options.fill, true);
+  this.fill = Cesium.defaultValue(options.fill, true);
 
   this.labelStroke = options.labelStroke;
-  this.labelStrokeWidth = defaultValue(options.labelStrokeWidth, 1);
-  this.labelStrokeColor = defaultValue(getColor(options.labelStrokeColor), getColor([160, 99, 57]));
+  this.labelStrokeWidth = Cesium.defaultValue(options.labelStrokeWidth, 1);
+  this.labelStrokeColor = Cesium.defaultValue(getColor(options.labelStrokeColor), getColor([160, 99, 57]));
 
   //线样式
-  this.outlineColor = defaultValue(getColor(options.outlineColor), getColor("yellow"));
+  this.outlineColor = Cesium.defaultValue(getColor(options.outlineColor), getColor("yellow"));
 
   this.backgroundColor = getColor(options.backgroundColor);
 
-  this.lineWidth = defaultValue(options.lineWidth, 1.5);
-  this.outline = defaultValue(options.outline, true);
+  this.lineWidth = Cesium.defaultValue(options.lineWidth, 1.5);
+  this.outline = Cesium.defaultValue(options.outline, true);
 
   //注记样式
-  this.fontColor = getColor(defaultValue(options.fontColor, "black"));
+  this.fontColor = getColor(Cesium.defaultValue(options.fontColor, "black"));
 
-  this.fontSize = defaultValue(options.fontSize, 16);
-  this.fontFamily = defaultValue(options.fontFamily, "宋体");
-  this.pointSize = defaultValue(options.pointSize, 4);
-  this.pointColor = getColor(defaultValue(options.pointColor, "yellow"));
+  this.fontSize = Cesium.defaultValue(options.fontSize, 16);
+  this.fontFamily = Cesium.defaultValue(options.fontFamily, "宋体");
+  this.pointSize = Cesium.defaultValue(options.pointSize, 4);
+  this.pointColor = getColor(Cesium.defaultValue(options.pointColor, "yellow"));
 
-  this.pointStyle = defaultValue(options.pointStyle, "Ring"); //'Solid','Ring','Circle'
-  this.labelPropertyName = defaultValue(options.labelPropertyName, "NAME");
-  this.ringRadius = defaultValue(options.ringRadius, 2);
-  this.circleLineWidth = defaultValue(options.circleLineWidth, 2);
-  if (defined(options.showMaker)) {
-    this.showMarker = defaultValue(options.showMaker, true);
+  this.pointStyle = Cesium.defaultValue(options.pointStyle, "Ring"); //'Solid','Ring','Circle'
+  this.labelPropertyName = Cesium.defaultValue(options.labelPropertyName, "NAME");
+  this.ringRadius = Cesium.defaultValue(options.ringRadius, 2);
+  this.circleLineWidth = Cesium.defaultValue(options.circleLineWidth, 2);
+  if (Cesium.defined(options.showMaker)) {
+    this.showMarker = Cesium.defaultValue(options.showMaker, true);
   }
-  if (defined(options.showMarker)) {
-    this.showMarker = defaultValue(options.showMarker, true);
+  if (Cesium.defined(options.showMarker)) {
+    this.showMarker = Cesium.defaultValue(options.showMarker, true);
   }
 
-  this.showLabel = defaultValue(options.showLabel, true);
+  this.showLabel = Cesium.defaultValue(options.showLabel, true);
 
-  this.showCenterLabel = defaultValue(options.showCenterLabel, false);
+  this.showCenterLabel = Cesium.defaultValue(options.showCenterLabel, false);
   this.centerLabelPropertyName = options.centerLabelPropertyName;
 
-  this.labelOffsetX = defaultValue(options.labelOffsetX, 0);
-  this.labelOffsetY = defaultValue(options.labelOffsetY, 0);
+  this.labelOffsetX = Cesium.defaultValue(options.labelOffsetX, 0);
+  this.labelOffsetY = Cesium.defaultValue(options.labelOffsetY, 0);
   this.markerImage = options.markerImage;
 
   this.lineDash = options.lineDash;
   //this.lineOffset = options.lineOffset;
-  this.lineCap = defaultValue(options.lineCap, "butt");
-  this.lineJoin = defaultValue(options.lineJoin, "miter");
+  this.lineCap = Cesium.defaultValue(options.lineCap, "butt");
+  this.lineJoin = Cesium.defaultValue(options.lineJoin, "miter");
   this.shadowColor = getColor(options.shadowColor);
 
   this.shadowBlur = options.shadowBlur;
   this.shadowOffsetX = options.shadowOffsetX;
   this.shadowOffsetY = options.shadowOffsetY;
-  this.miterLimit = defaultValue(options.miterLimit, 10);
+  this.miterLimit = Cesium.defaultValue(options.miterLimit, 10);
 
   this.markerImageEl = null;
   let makerImagePromise = null;

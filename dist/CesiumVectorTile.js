@@ -1,7 +1,7 @@
 /*!
  * 基于MikesWei的CesiumVectorTile代码整理规范修改，并用webpack打包
- * 版本信息：v2.0.0, hash值: fa2726f0cf952c13fc81
- * 编译日期：2022-04-30 17:19:55
+ * 版本信息：v2.0.0, hash值: d0acdda6c1d94d453884
+ * 编译日期：2022-04-30 17:22:32
  * Github：https://github.com/muyao1987/CesiumVectorTile/
  * 
  */
@@ -25905,7 +25905,7 @@ function VectorTileImageryProvider() {
 
     if (outlines.length > 0) {
       outlines.forEach(function (outline) {
-        outline.properties.isOutline = true;
+        outline.properties._outline = true;
       });
       that._outlineGeoJSON = turf_root_turf_["featureCollection"](outlines);
       outlines = null;
@@ -26797,7 +26797,7 @@ VectorTileImageryProvider.prototype._drawGeojson = function (context, x, y, geoj
       } catch (e) {//     console.log(e);
       }
     } else if (geometry.type == "MultiLineString") {
-      if (currentFeature.properties.isOutline && !style.outline) {//
+      if (currentFeature.properties._outline && !style.outline) {//
       } else {
         var _contours = turf_root_turf_["getCoords"](currentFeature);
 
@@ -26805,7 +26805,7 @@ VectorTileImageryProvider.prototype._drawGeojson = function (context, x, y, geoj
         _contours = null;
       }
     } else if (geometry.type == "LineString") {
-      if (currentFeature.properties.isOutline && !style.outline) {//
+      if (currentFeature.properties._outline && !style.outline) {//
       } else {
         var contour = turf_root_turf_["getCoords"](currentFeature);
         var _contours2 = [contour];

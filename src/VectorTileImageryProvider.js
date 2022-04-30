@@ -301,7 +301,7 @@ export function VectorTileImageryProvider(options = {}) {
 
     if (outlines.length > 0) {
       outlines.forEach(function (outline) {
-        outline.properties.isOutline = true;
+        outline.properties._outline = true;
       });
       that._outlineGeoJSON = turf.featureCollection(outlines);
       outlines = null;
@@ -1144,7 +1144,7 @@ VectorTileImageryProvider.prototype._drawGeojson = function (context, x, y, geoj
         //     console.log(e);
       }
     } else if (geometry.type == "MultiLineString") {
-      if (currentFeature.properties.isOutline && !style.outline) {
+      if (currentFeature.properties._outline && !style.outline) {
         //
       } else {
         let contours = turf.getCoords(currentFeature);
@@ -1152,7 +1152,7 @@ VectorTileImageryProvider.prototype._drawGeojson = function (context, x, y, geoj
         contours = null;
       }
     } else if (geometry.type == "LineString") {
-      if (currentFeature.properties.isOutline && !style.outline) {
+      if (currentFeature.properties._outline && !style.outline) {
         //
       } else {
         let contour = turf.getCoords(currentFeature);

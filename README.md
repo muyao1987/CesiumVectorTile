@@ -1,4 +1,20 @@
-﻿Cesium VectorTileImageryProvider
+﻿
+## 木遥修改版 
+基于MikesWei的[CesiumVectorTile仓库](https://github.com/MikesWei/CesiumVectorTile)代码整理规范修改。
+
+### 修改说明
+- 规范整理代码
+- 使用webpack打包
+- 排除Cesium、turf，改为依赖外部包
+- 支持升级到Cesium1.92+版本
+
+### API及示例
+请参考原仓库
+
+## 原始仓库介绍
+[原仓库地址](https://github.com/MikesWei/CesiumVectorTile.git)
+
+Cesium VectorTileImageryProvider
 支持小数据量的geojson、shape文件矢量动态切片，实现贴地
 ![](https://mikeswei.github.io/CesiumVectorTile/screenshot.jpg)
 ![](https://mikeswei.github.io/CesiumVectorTile/screenshot2.jpg)

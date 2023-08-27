@@ -168,7 +168,7 @@ export function VectorTileImageryProvider(options = {}) {
       let dic = {};
       turf.featureEach(geoJSON, function (fc) {
         let geometry = fc.geometry;
-        if (geometry) {
+        if (!geometry) {
           return;
         }
 

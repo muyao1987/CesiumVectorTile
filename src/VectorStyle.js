@@ -45,16 +45,11 @@ function getColor(color) {
  *@param {Number}[options.shadowOffsetY=undefined] 设置阴影距形状的垂直距离
  *@param {String}[options.lineJoin="miter"] 设置当两条线交汇时所创建边角的类型。bevel——斜角；round——创建圆角；miter——默认。创建尖角。
  *@param {Number}[options.miterLimit=10] 设置最大斜接长度。
+//*@param {Number}[options.lineOffset=undefined] 双线样式参数，两线间距，单位为米(m)。不设置则为单线
  *@memberof Cesium
  *@constructor
  */
-export function VectorStyle(options) {
-  //*@param {Number}[options.lineOffset=undefined] 双线样式参数，两线间距，单位为米(m)。不设置则为单线
-
-  if (typeof document == "undefined") {
-    return options;
-  }
-  options = Cesium.defaultValue(options, {});
+export function VectorStyle(options = {}) {
   this.fillColor = Cesium.defaultValue(getColor(options.fillColor), getColor([0, 255, 255, 30]));
 
   this.fill = Cesium.defaultValue(options.fill, true);
